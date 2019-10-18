@@ -1,0 +1,161 @@
+#homePage{
+  width: 100%;
+  overflow: auto;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  .home-content{
+    margin-top: 16px;
+    &:after{
+      content: '';
+      display: block;
+      font-size: 0;
+      clear: both;
+    }
+    .block{
+      position: relative;
+      background-color: #fff;
+      border-radius: 4px;
+      float: left;
+      padding: 16px;
+      &:after{
+        content: '';
+        display: block;
+        font-size: 0;
+        clear: both;
+      }
+      &.right{
+        margin-left: 16px;
+      }
+      &.bottom{
+        margin-top: 16px;
+      }
+      > div.title{
+        color: #4c4c4c;
+        font-size: 16px;
+        line-height: 1;
+        padding-bottom: 16px;
+      }
+    }
+  }
+  .pie-container{
+    float: left;
+    margin-left: 16px;
+    &:first-child{
+      margin-left: 0;
+    }
+    .pie-info{
+      font-size: 14px;
+      line-height: 1;
+      text-align: center;
+      .name,
+      .num{
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+#linksBox{
+  @linkHeight: 60px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  .link{
+    flex: 1 1 auto;
+    width: auto;
+    height: @linkHeight;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    &:first-child{
+      margin-left: 0;
+    }
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: @linkHeight;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    &:hover{
+      transform: scale(1.02);
+    }
+    .text{
+      position: relative;
+      top: -24px;
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 16px;
+      line-height: @linkHeight;
+      color: #4d4d4d;
+    }
+  }
+}
+div.links-more{
+  .link {
+    cursor: pointer;
+    .text{
+      position: relative;
+      top: -7px;
+      margin-left: 8px;
+      display: inline-block;
+      line-height: 24px;
+    }
+    &:before{
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+.link{
+  &.ygl:before{
+    background-image: url("../assets/images/icon_ygl.png");
+  }
+  &.dsj:before{
+    background-image: url("../assets/images/icon_dsj.png");
+  }
+  &.yaq:before{
+    background-image: url("../assets/images/icon_yaq.png");
+  }
+  &.yw:before{
+    background-image: url("../assets/images/icon_yyw.png");
+  }
+  &.gis_suppet:before{
+    background-image: url("../assets/images/gis_suppet.png");
+  }
+  &.one_map_many_rule:before{
+    background-image: url("../assets/images/one_map_many_rule.png");
+  }
+  &.bigdata:before{
+    background-image: url("../assets/images/bigdata.png");
+  }
+  &.cloud_pateform:before{
+    background-image: url("../assets/images/cloud_pateform.png");
+  }
+  &.database_management:before{
+    background-image: url("../assets/images/database_management.png");
+  }
+  &.geology_consult:before{
+    background-image: url("../assets/images/geology_consult.png");
+  }
+  &.more:before{
+    background-image: url("../assets/images/more.png");
+  }
+  &.qilinqu:before{
+    background-image: url("../assets/images/qilinqu.png");
+  }
+}

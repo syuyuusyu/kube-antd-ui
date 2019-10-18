@@ -1,0 +1,174 @@
+// 重置antd
+.ant-layout-header{
+  background-color: transparent;
+}
+.ant-layout-footer{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+// 部分排版
+// todo 考虑重构
+.box-code-card .ant-card-body{
+  height:300px;
+  overflow-y:auto;
+}
+
+.table-head-row {
+  margin-bottom:10px;
+}
+
+.table-head-row .col-label{
+  line-height:32px;
+}
+
+.table-head-row .col-input{
+  width:150px;
+}
+
+.table-head-row .col-button{
+  float: right;
+}
+
+// 公共样式
+ul.popover-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li{
+    cursor: pointer;
+    &:hover{
+      background-color: #eeeeee;
+    }
+  }
+}
+
+// 主体
+@headerHeight: 60px;
+div#mainBox{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  footer{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+}
+div#contentBox{
+  width: 100%;
+  min-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 16px 16px 0;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+div#headerBox{
+  position: relative;
+  height: @headerHeight;
+  background-color: @blueMain;
+}
+div#logoBox{
+  float: left;
+  width: 320px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: @headerHeight;
+  color: #fff;
+  background-color: @blueDeep;
+}
+div#userBox{
+  @userBoxWidth: 140px;
+  @userFontSize: 16px;
+  float: right;
+  max-width: @userBoxWidth;
+  padding-top: (@headerHeight - @userFontSize) / 2;
+  padding-right: 16px;
+  text-align: center;
+  line-height: 1;
+  font-size: @userFontSize;
+  color: #fff;
+  cursor: pointer;
+  span,
+  i:before{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .name{
+    max-width: @userBoxWidth - 48px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+div#searchBox{
+  @searchWidth: 400px;
+  @searchInputHeight: 40px;
+  position: absolute;
+  top: (@headerHeight - @searchInputHeight) / 2;
+  left: 50%;
+  width: @searchWidth;
+  margin-left: -(@searchWidth / 2);
+  line-height: @searchInputHeight;
+  input{
+    border: none;
+    background-color: @blueDeep;
+    border-radius: @searchInputHeight / 2;
+    color: #fff;
+  }
+  i{
+    position: absolute;
+    top: (@searchInputHeight - 16) / 2;
+    right: 16px;
+    font-size: 16px;
+    color: #fff;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+}
+#messageBox{
+  float: right;
+  width: @headerHeight;
+  margin-top: (@headerHeight - 16px) / 2;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  .ant-badge-dot{
+    width: 8px;
+    height: 8px;
+    box-shadow: none;
+  }
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+#mainMenu{
+  @menuHeigth: 60px;
+  height: @menuHeigth;
+  font-size: 16px;
+  line-height: @menuHeigth;
+  text-align: center;
+  color: #4d4d4d;
+}
+
+// 附加页面
+div.extend-layout{
+  position: relative;
+  footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #f5f5f5;
+  }
+}
