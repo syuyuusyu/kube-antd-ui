@@ -148,13 +148,13 @@ export class SysOperationStore{
         this.opFormVisible=!this.opFormVisible;
     };
 
-    // @action
-    // loadOperation=async ()=>{
-    //     let json=await get(`${kubeUrl}/sys/platform/operations/${this.currentSys.id}`);
-    //     runInAction(()=>{
-    //         this.currentOperations=json;
-    //     });
-    // };
+    @action
+    loadOperation=async ()=>{
+        let json=await get(`${kubeUrl}/sys/platform/operation/${this.currentSys.id}`);
+        runInAction(()=>{
+            this.currentOperations=json;
+        });
+    };
 
 
 

@@ -140,11 +140,13 @@ export const log = (target, name, descriptor) => {
 };
 
 
+export const baseUrl = 'http://192.168.1.194:7001';
+export const kubeUrl = 'http://192.168.1.194:7002';
+export const activitiUrl = "http://192.168.1.194:5001";
 
-
-export const baseUrl = 'http://127.0.0.1:7001';
-export const kubeUrl = 'http://127.0.0.1:7002';
-export const activitiUrl = "http://127.0.0.1:5001";
+// export const baseUrl = 'http://127.0.0.1:7001';
+// export const kubeUrl = 'http://127.0.0.1:7002';
+// export const activitiUrl = "http://127.0.0.1:5001";
 
 
 

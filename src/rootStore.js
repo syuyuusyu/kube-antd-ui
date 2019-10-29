@@ -16,7 +16,7 @@ export default class RootStore {
 
     constructor() {
         this.treeStore = new TreeStore(this);
-        this.authorityStore = new AuthorityStore(this);
+
         this.entityStore=new EntityStore(this);
         this.commonStore=new CommonStore(this);
         this.podStore = new PodStore(this);
@@ -25,6 +25,7 @@ export default class RootStore {
         this.activitiStore = new ActivitiStore(this);
         this.sysStore = new SysStore(this);
         this.sysOperationStore = new SysOperationStore(this);
+        this.authorityStore = new AuthorityStore(this);
     }
 }
 

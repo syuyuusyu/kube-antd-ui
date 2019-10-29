@@ -47,19 +47,21 @@ class Main extends Component {
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.winResize, false);
+
+
     }
 
     componentDidMount() {
         //角色权限变动以后需要刷新的数据
-        if (!this.props.rootStore.authorityStore.loginVisible) {
-            Promise.all([
-                this.props.rootStore.treeStore.loadMenuTree()
-            ]);
-        }
+        // if (!this.props.rootStore.authorityStore.loginVisible) {
+        //     Promise.all([
+        //         this.props.rootStore.treeStore.loadMenuTree()
+        //     ]);
+        // }
     }
 
     render() {
-        const {loginVisible} = this.props.rootStore.authorityStore;
+        const {loginVisible,currentUser} = this.props.rootStore.authorityStore;
         const treeStore = this.props.rootStore.treeStore;
         const {winWidth, winHeight, headerHeight, menuHeight, footerHeight} = treeStore;
         const userOperations = (
@@ -105,7 +107,7 @@ class Main extends Component {
                             <div id="userBox">
                                 <Icon type="user"/>
                                 <span
-                                    className="name">&nbsp;&nbsp;{sessionStorage.getItem('currentUserName')}&nbsp;</span>
+                                    className="name">&nbsp;&nbsp;{currentUser.name}&nbsp;</span>
                                 <Icon type="down" style={{fontSize: '12px'}}/>
                             </div>
                         </Popover>

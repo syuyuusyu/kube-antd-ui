@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Row, Col, Input, Button ,notification,Select} from 'antd';
 import {inject,observer} from 'mobx-react';
-import {baseUrl,post} from '../util';
+import {baseUrl, kubeUrl, post} from '../util';
 const Option=Select.Option;
 const FormItem = Form.Item;
 
@@ -24,12 +24,12 @@ class OpForm extends React.Component{
         const store=this.props.rootStore.sysOperationStore;
         this.props.form.validateFields(async (err,values)=>{
             if(err) return;
-            values.system_id=store.currentSys.id;
+            values.platformId=store.currentSys.id;
             if(store.currentOperation){
                 values.id=store.currentOperation.id;
             }
             console.log(values);
-            let json=await post(`${baseUrl}/op/save` , values);
+            let json=await post(`${kubeUrl}/sys/platform/operation` , values);
             if(json.success){
                 notification.success({
                     message:'保存成功',

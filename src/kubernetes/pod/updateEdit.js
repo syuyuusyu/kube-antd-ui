@@ -39,7 +39,6 @@ class UpdateEdit extends Component {
             podStore.read();
         }
 
-        this.props.rootStore.kubeStore.loadMessage();
     }
 
 

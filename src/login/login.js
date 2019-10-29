@@ -21,35 +21,7 @@ class Login extends React.Component {
     login = () => {
         this.props.form.validateFields(async (err, values) => {
             if (err) return;
-            let response = await axios({
-                    url: `${kubeUrl}/sys/author/login`,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: JSON.stringify(values),
-                }
-            );
-            let json = response.data;
-            //console.log("json的值为:",json);
-            console.log(json.roles);
-            if(json.success){
-                notification.success({
-                    message: '登录成功',
-                });
-                sessionStorage.setItem('access-token', json.token);
-                sessionStorage.setItem('currentUserName', json.user.name);
-                sessionStorage.setItem('user', JSON.stringify(json.user));
-                sessionStorage.setItem('roles',JSON.stringify(json.user.roles));
-                await Promise.all([
-                    this.props.rootStore.treeStore.loadMenuTree()
-                ]);
-                this.store.taggreLogin();
-            }else {
-                notification.warning({
-                    message: '用户不存在或密码错误',
-                });
-            }
+            this.store.login(values);
 
         });
     };

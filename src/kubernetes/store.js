@@ -128,25 +128,26 @@ export  class KubeStore {
         }
     }
 
-    logEventSource = null;
+    msgEventSource = null;
 
     loadMessage = () => {
-        this.logEventSource = new EventSourcePolyfill(`${kubeUrl}/message`, {
+        let token = sessionStorage.getItem('access-token');
+        this.msgEventSource = new EventSourcePolyfill(`${kubeUrl}/message`, {
             headers: {
-                'access-token': sessionStorage.getItem('access-token') || ''
+                'access-token': token
             }
         });
-        this.logEventSource.onmessage = result => {
+        this.msgEventSource.onmessage = result => {
             //const data = JSON.parse(result.data);
             console.log('Data: ', result);
             if (result && result.data) {
-
+                if (result.data === 'act_task'){
+                    this.rootStore.activitiStore.loadCurrentTask();
+                }
             }
-
-
         };
 
-        this.logEventSource.onerror = err => {
+        this.msgEventSource.onerror = err => {
             console.log('EventSource error: ', err);
         };
     };

@@ -39,7 +39,7 @@ export class ActivitiStore {
             });
             return;
         }
-        let username = JSON.parse(sessionStorage.getItem("user")).userName;
+        let username = this.rootStore.authorityStore.currentUser.userName;
         let startResult = await post(`${activitiUrl}/runtime/process-instances`,
             {
                 processDefinitionId: process.id,
@@ -55,7 +55,7 @@ export class ActivitiStore {
             notification.info({
                 message: `流程启动成功,请在待办信息中查看`
             });
-            this.loadCurrentTask();
+            //this.loadCurrentTask();
         } else {
             notification.error({
                 message: `启动流程失败,请联系管理员!!!`
@@ -243,20 +243,20 @@ export class ActivitiStore {
         let username = JSON.parse(sessionStorage.getItem("user")).userName;
         let json = await get(`${activitiUrl}/userTask/${username}`);
         for(let i=0;i<json.length;i++){
-            if(json[i].name=='审批申请平台权限' || json[i].name=='审批注销平台权限'){
-                let [user] = await post(`${baseUrl}/user/queryUser`,{selectUser:json[i].owner});
-                if(user){
-                    let org=await post(`${baseUrl}/interfaces`,
-                        {
-                            method:"user_org",
-                            username:user.userName
-                        });
-                    if(org.status && org.status=='801'){
-                        json[i].ownerOrg=org.respdata.organization.name
-                    }
-                }
-
-            }
+            // if(json[i].name=='审批申请平台权限' || json[i].name=='审批注销平台权限'){
+            //     let [user] = await post(`${baseUrl}/user/queryUser`,{selectUser:json[i].owner});
+            //     if(user){
+            //         let org=await post(`${baseUrl}/interfaces`,
+            //             {
+            //                 method:"user_org",
+            //                 username:user.userName
+            //             });
+            //         if(org.status && org.status=='801'){
+            //             json[i].ownerOrg=org.respdata.organization.name
+            //         }
+            //     }
+            //
+            // }
 
 
         }
@@ -279,10 +279,6 @@ export class ActivitiStore {
             this.selectedTask = record;
         });
         //如果是获取消息,获取一个随机的ispToken
-        console.log(record);
-        if(record.name==='查看消息'){
-            this.getRandomToken();
-        }
         this.toggleUserTaskFormVisible();
 
     });
@@ -306,22 +302,6 @@ export class ActivitiStore {
     @observable
     message='';
 
-    @observable
-    ispToken='';
-
-    @observable
-    currentRoleSys=[];
-
-    @action
-    getRandomToken=async ()=>{
-        //let {ispToken}=await get(`${baseUrl}/randomToken`);
-        let json=await get(`${baseUrl}/sys/currentRoleSys`);
-        runInAction(()=>{
-            //this.ispToken=ispToken;
-            this.currentRoleSys=json;
-        })
-    };
-
     @action
     loadMessage=async ()=>{
         let json=await get(`${activitiUrl}/userTask/variables/${this.selectedTask.id}/message`);
@@ -329,6 +309,4 @@ export class ActivitiStore {
             this.message=json.data?json.data:'';
         });
     }
-
-
 }

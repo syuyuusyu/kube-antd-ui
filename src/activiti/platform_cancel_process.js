@@ -1,10 +1,7 @@
-import {notification} from 'antd';
-
 //平台访问权限申请流程的相关方法
 
 //用户申请访问权限后提交的信息
 const applyVariable=(values,formData)=>{
-
     let username = JSON.parse(sessionStorage.getItem("user")).name;
     let msg=username+'注销以下平台权限:';
     let applySystemCode=[];
@@ -38,7 +35,6 @@ const applyVariable=(values,formData)=>{
 
 //平台访问权限角色审批后提交的信息
 const approval=(values,formData)=>{
-
     let approval=false;
     let applySystemCode=[];
     let username = JSON.parse(sessionStorage.getItem("user")).name;
@@ -52,7 +48,6 @@ const approval=(values,formData)=>{
             message+=`拒绝注销${data.label}权限,`
         }
     });
-
     return {
         approval:approval,
         message:message,

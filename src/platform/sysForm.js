@@ -89,7 +89,7 @@ class SysForm extends React.Component{
                     <Select>
                         <Option value={'SSO'} >单点登录</Option>
                         <Option value={'PLAN'} >直接访问</Option>
-                        <Option value={''} >其他</Option>
+                        <Option value={'OTHER'} >其他</Option>
                     </Select>
                 )}
             </FormItem>

@@ -1,4 +1,3 @@
-import {notification} from 'antd';
 
 //平台访问权限申请流程的相关方法
 

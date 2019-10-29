@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {
-    Modal, Badge, Icon, Input, Table, Dropdown, Menu, Button, Divider, Popconfirm
+    Modal, Drawer, Icon, Input, Table, Dropdown, Menu, Button, Divider, Popconfirm
 } from 'antd';
 import {inject, observer} from 'mobx-react';
 
 import UpdateEdit from './updateEdit'
 import LogConsole from './logConsole'
 import TerminalConsole from './termianer'
+import SysOperation from "../../platform/sysOperation";
 
 
 @inject('rootStore')
@@ -105,39 +106,45 @@ class PodTable extends Component {
         return (
             <div>
 
-                <Modal visible={store.consoleVisible}
-                       width={800}
-                       title={`控制台`}
-                       footer={null}
-                       onCancel={store.toggleConsoleVisible()}
-                       maskClosable={false}
-                       destroyOnClose={true}
-                       key="1"
+                <Drawer
+                    title={'控制台'}
+                    placement="right"
+                    width={1220}
+                    zIndex={999}
+                    closable={true}
+                    maskClosable={false}
+                    destroyOnClose={true}
+                    onClose={store.toggleConsoleVisible()}
+                    visible={store.consoleVisible}
                 >
                     <TerminalConsole/>
-                </Modal>
-                <Modal visible={store.logVisible}
-                       width={800}
-                       title={`日志`}
-                       footer={null}
-                       onCancel={store.toggleLogVisible()}
-                       maskClosable={false}
-                       destroyOnClose={true}
-                       key="2"
+                </Drawer>
+                <Drawer
+                    title={'日志'}
+                    placement="right"
+                    width={1220}
+                    zIndex={999}
+                    closable={true}
+                    maskClosable={false}
+                    destroyOnClose={true}
+                    onClose={store.toggleLogVisible()}
+                    visible={store.logVisible}
                 >
                     <LogConsole/>
-                </Modal>
-                <Modal visible={store.editVisible}
-                       width={800}
-                       title={`编辑`}
-                       footer={null}
-                       onCancel={store.toggleEditVisible()}
-                       maskClosable={false}
-                       destroyOnClose={true}
-                       key="3"
+                </Drawer>
+                <Drawer
+                    title={'编辑'}
+                    placement="right"
+                    width={1220}
+                    zIndex={999}
+                    closable={true}
+                    maskClosable={false}
+                    destroyOnClose={true}
+                    onClose={store.toggleEditVisible()}
+                    visible={store.editVisible}
                 >
                     <UpdateEdit/>
-                </Modal>
+                </Drawer>
                 <Table
                     columns={this.columns}
                     rowKey={record => record.uid}
